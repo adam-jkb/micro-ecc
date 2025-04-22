@@ -17,6 +17,8 @@ Possible values for uECC_PLATFORM are defined below: */
 #define uECC_arm64      6
 #define uECC_avr        7
 
+#define uECC_PLATFORM uECC_arm_thumb2
+
 /* If desired, you can define uECC_WORD_SIZE as appropriate for your platform (1, 4, or 8 bytes).
 If uECC_WORD_SIZE is not explicitly defined then it will be automatically set based on your
 platform. */
@@ -27,14 +29,14 @@ platform. */
    Optimization level 4 currently only has an effect ARM platforms where more than one
    curve is enabled. */
 #ifndef uECC_OPTIMIZATION_LEVEL
-    #define uECC_OPTIMIZATION_LEVEL 2
+    #define uECC_OPTIMIZATION_LEVEL 4
 #endif
 
 /* uECC_SQUARE_FUNC - If enabled (defined as nonzero), this will cause a specific function to be
 used for (scalar) squaring instead of the generic multiplication function. This can make things
 faster somewhat faster, but increases the code size. */
 #ifndef uECC_SQUARE_FUNC
-    #define uECC_SQUARE_FUNC 0
+    #define uECC_SQUARE_FUNC 1
 #endif
 
 /* uECC_VLI_NATIVE_LITTLE_ENDIAN - If enabled (defined as nonzero), this will switch to native
@@ -49,7 +51,7 @@ IMPORTANT: Keys and signatures generated with uECC_VLI_NATIVE_LITTLE_ENDIAN=1 ar
 with keys and signatures generated with uECC_VLI_NATIVE_LITTLE_ENDIAN=0; all parties must use
 the same endianness. */
 #ifndef uECC_VLI_NATIVE_LITTLE_ENDIAN
-    #define uECC_VLI_NATIVE_LITTLE_ENDIAN 0
+    #define uECC_VLI_NATIVE_LITTLE_ENDIAN 1
 #endif
 
 /* Curve support selection. Set to 0 to remove that curve. */
